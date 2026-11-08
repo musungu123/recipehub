@@ -1,6 +1,10 @@
-import { React } from "react";
+import { useState } from "react";
 
 function RecipeCard({recipe}) {
+    const [likes, setLikes] = useState(0);
+    function handleLike() {
+      setLikes(likes + 1);
+    }
     return(
          <div className="recipe-card">
       <h2>{recipe.title}</h2>
@@ -11,6 +15,8 @@ function RecipeCard({recipe}) {
         ))}
       </ul>
       <p><strong>Instructions:</strong> {recipe.instructions}</p>
+      <button onClick={handleLike}>Like ({likes})</button>
+      <p>Likes: {likes}</p>
     </div>
     );
 }
